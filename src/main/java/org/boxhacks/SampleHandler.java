@@ -11,6 +11,8 @@ import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
+import com.petebevin.markdown.MarkdownProcessor;
+
 /**
  * Sample handler for jetty
  * 
@@ -24,6 +26,6 @@ public class SampleHandler extends AbstractHandler {
 		response.setContentType("text/html;charset=utf-8");
 		response.setStatus(HttpServletResponse.SC_OK);
 		baseRequest.setHandled(true);
-		response.getWriter().println(new Date());
+		response.getWriter().println(new MarkdownProcessor().markdown("## "+ String.valueOf(new Date())));
 	}
 }
